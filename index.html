@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FBFAF7">
+<title>Duong Anh My — QA / Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     "TERMINAL TEST RUN"
+     A QA engineer's CV rendered as a live test session:
+     prompts, suite output, and a git log of their career.
+     Palette: warm paper + deep moss terminal + earth amber.
+     Type: Fraunces (serif display, wonky/optical) · JetBrains
+     Mono (all data/terminal) · Newsreader (reading copy).
+     ============================================================ */
+  :root {
+    --paper:    #FBFAF7;
+    --paper-2:  #F3F1EA;
+    --ink:      #1A1A17;
+    --ink-2:    #44443D;
+    --ink-3:    #76756A;
+    --rule:     #DAD7CC;
+    --terminal: #14342B;
+    --term-ink: #DDE8DF;
+    --term-dim: #7FA08C;
+    --moss:     #3F6B4F;
+    --amber:    #B0480C;
+    --amber-2:  #C2410C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, html, body { forced-color-adjust: none; -webkit-forced-color-adjust: none; }
+
+  html { background: var(--paper); -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+
+  ::selection { background: var(--moss); color: var(--paper); }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  .shell { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  .prompt {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13.5px;
+    color: var(--ink-3);
+    letter-spacing: -.01em;
+    margin-bottom: 14px;
+    display: flex; align-items: baseline; gap: 9px;
+    flex-wrap: wrap;
+  }
+  .prompt .sigil { color: var(--moss); font-weight: 700; }
+  .prompt .cmd   { color: var(--ink-2); }
+  .caret {
+    display: inline-block; width: 8px; height: 1.05em;
+    background: var(--moss); margin-left: 2px;
+    transform: translateY(2px);
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  header { padding: 70px 0 8px; }
+  .name {
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-size: clamp(52px, 12vw, 116px);
+    line-height: .92;
+    letter-spacing: -.025em;
+    color: var(--ink);
+    margin: 6px 0 0 -4px;
+    font-optical-sizing: auto;
+  }
+  .name .period { color: var(--amber); }
+  .tagline {
+    font-family: "JetBrains Mono", monospace;
+    font-size: clamp(13px, 2.4vw, 16px);
+    color: var(--ink-2);
+    margin-top: 22px;
+    letter-spacing: -.01em;
+  }
+  .tagline .ok { color: var(--moss); font-weight: 700; }
+
+  .lede {
+    font-size: clamp(19px, 2.6vw, 23px);
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 620px;
+    margin: 30px 0 0;
+  }
+  .lede b { color: var(--ink); font-weight: 600; }
+
+  .links {
+    margin-top: 34px;
+    display: flex; flex-wrap: wrap; gap: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13.5px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .links a {
+    padding: 15px 20px 15px 0;
+    margin-right: 22px;
+    color: var(--ink-2);
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .links a:hover { color: var(--amber); }
+  .links a.dl { color: var(--moss); font-weight: 700; }
+  .links a.dl:hover { color: var(--amber); }
+  .links svg { width: 14px; height: 14px; }
+
+  section { padding: 64px 0 0; }
+  .sec-cmd {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+  .sec-cmd .sigil { color: var(--moss); font-weight: 700; }
+  .sec-cmd .cmd { color: var(--ink); font-weight: 500; }
+  .sec-cmd .flag { color: var(--amber); }
+  .sec-out {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px; color: var(--ink-3);
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    margin-bottom: 22px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+  }
+  .filters button {
+    background: none; border: none; cursor: pointer;
+    color: var(--ink-3); font-family: inherit; font-size: inherit;
+    padding: 3px 0; letter-spacing: -.01em;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .filters button:hover { color: var(--ink); }
+  .filters button.on { color: var(--moss); border-color: var(--moss); font-weight: 700; }
+
+  .suite {
+    font-family: "JetBrains Mono", monospace;
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 0 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+    transition: opacity .25s;
+  }
+  .suite.dim { opacity: .26; }
+  .suite .pass {
+    font-size: 11px; font-weight: 700;
+    color: var(--moss);
+    letter-spacing: .04em;
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+  .suite .pass.expert { color: var(--amber); }
+  .suite-body .nm {
+    font-size: 14.5px; font-weight: 700; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .suite-body .nm .lvl {
+    font-size: 10.5px; font-weight: 500; color: var(--ink-3);
+    margin-left: 8px; letter-spacing: .04em;
+  }
+  .suite-body .it {
+    font-size: 13px; color: var(--ink-2); line-height: 1.55;
+  }
+
+  .gitlog { position: relative; }
+  .commit {
+    position: relative;
+    padding: 0 0 38px 30px;
+    border-left: 1px solid var(--rule);
+  }
+  .commit:last-child { border-left-color: transparent; padding-bottom: 8px; }
+  .commit::before {
+    content: "";
+    position: absolute; left: -5.5px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--moss);
+  }
+  .commit.head::before { background: var(--moss); }
+  .commit-hd {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+    margin-bottom: 3px;
+  }
+  .commit-hd .hash { color: var(--amber); font-weight: 700; }
+  .commit-hd .co { color: var(--ink); font-weight: 700; font-size: 15px; }
+  .commit-hd .when { color: var(--ink-3); margin-left: auto; }
+  .commit-hd .badge {
+    font-size: 10px; color: var(--moss); border: 1px solid var(--moss);
+    border-radius: 2px; padding: 1px 5px; letter-spacing: .03em;
+  }
+
+  .proj { margin-top: 16px; }
+  .proj-t {
+    font-family: "Fraunces", serif;
+    font-size: 19px; font-weight: 600; color: var(--ink);
+    line-height: 1.2; margin-bottom: 2px;
+  }
+  .proj-t .role { color: var(--amber); font-weight: 500; font-size: 15px; }
+  .proj-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; color: var(--ink-3);
+    margin: 5px 0 10px; line-height: 1.5;
+  }
+  .proj ul { list-style: none; }
+  .proj li {
+    font-size: 15.5px; color: var(--ink-2); line-height: 1.5;
+    padding-left: 20px; position: relative; margin-bottom: 7px;
+  }
+  .proj li::before {
+    content: "—"; position: absolute; left: 0; color: var(--moss);
+  }
+  .proj li b { color: var(--ink); font-weight: 600; }
+
+  .edu { display: grid; gap: 0; }
+  .edu-row {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+    padding: 15px 0; border-bottom: 1px solid var(--rule);
+  }
+  .edu-row .d { font-weight: 600; color: var(--ink); }
+  .edu-row .s {
+    font-family: "JetBrains Mono", monospace; font-size: 12.5px;
+    color: var(--ink-3); margin-left: auto;
+  }
+
+  footer {
+    margin-top: 70px; padding: 30px 0 70px;
+    border-top: 1px solid var(--rule);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px; color: var(--ink-3);
+  }
+  footer .ok { color: var(--moss); font-weight: 700; }
+
+  .rv { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+  .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .rv { opacity: 1; transform: none; transition: none; }
+    .caret { animation: none; }
+  }
+
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    .suite { grid-template-columns: 72px 1fr; }
+    .commit-hd .when { margin-left: 0; width: 100%; }
+    .links a { margin-right: 16px; padding-right: 16px; }
+  }
+
+  @media print {
+    .filters, .caret, .links .dl { display: none; }
+    body { font-size: 12pt; }
+    .commit { page-break-inside: avoid; }
+    .rv { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header>
+    <div class="prompt mono rv">
+      <span class="sigil">my@career</span><span>:</span><span class="cmd">~/</span><span>$ whoami<span class="caret"></span></span>
+    </div>
+    <h1 class="name rv">Duong&nbsp;Anh&nbsp;My<span class="period">.</span></h1>
+    <div class="tagline mono rv">
+      Senior QA &amp; Automation Engineer&nbsp;&nbsp;//&nbsp;&nbsp;<span class="ok">15 years</span>, 0 regressions shipped
+    </div>
+    <p class="lede rv">
+      I build test automation from the ground up, lead QA teams of up to <b>9</b>,
+      and wire AI into the pipeline to move faster. Fifteen years across
+      <b>Web, Mobile, IoT, API and Performance</b> — working hand-in-hand with
+      teams in the UK, Australia, Canada, India and the US.
+    </p>
+
+    <nav class="links mono rv">
+      <a class="dl" href="#" id="dl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        download.pdf
+      </a>
+      <a href="mailto:duong.it1987@gmail.com">email</a>
+      <a href="tel:+84963744628">+84&nbsp;963&nbsp;744&nbsp;628</a>
+      <a href="#" id="linkedin">linkedin</a>
+      <a href="#" id="github">github</a>
+    </nav>
+  </header>
+
+  <section id="skills">
+    <div class="sec-cmd mono rv"><span class="sigil">$</span> <span class="cmd">run</span> <span class="flag">--suite</span> skills</div>
+    <div class="sec-out mono rv">collecting … 9 suites · 9 passed · 0 failed</div>
+
+    <div class="filters mono rv" id="filters">
+      <button class="on" data-c="all">[ all ]</button>
+      <button data-c="automation">automation</button>
+      <button data-c="api">api</button>
+      <button data-c="perf">performance</button>
+      <button data-c="devops">ci/cd</button>
+      <button data-c="lang">languages</button>
+      <button data-c="ai">ai</button>
+    </div>
+
+    <div id="suites"></div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-cmd mono rv"><span class="sigil">$</span> <span class="cmd">git log</span> <span class="flag">--author</span>="my" <span class="flag">--oneline</span></div>
+    <div class="sec-out mono rv">6 companies · 15 years of commits · branch: senior-qe</div>
+    <div class="gitlog" id="gitlog"></div>
+  </section>
+
+  <section id="education">
+    <div class="sec-cmd mono rv"><span class="sigil">$</span> <span class="cmd">cat</span> education.log</div>
+    <div class="sec-out mono rv">2 records</div>
+    <div class="edu rv">
+      <div class="edu-row"><span class="d">Software Engineering Certificate</span><span class="s">Van Lang University · 2009–2010</span></div>
+      <div class="edu-row"><span class="d">Information Technology Diploma</span><span class="s">Cao Thang Technical College · 2006–2008</span></div>
+    </div>
+  </section>
+
+  <footer class="rv">
+    <span class="ok">Process finished with exit code 0</span><br>
+    duong anh my · ho chi minh city · available for senior qa / sdet roles
+  </footer>
+</div>
+
+<script>
+const SKILLS = [
+  { nm:"Test Automation", lvl:"15 yrs", tag:"EXPERT", c:"automation", it:"Playwright · Pytest · Appium · Selenium · Robot Framework · TestNG · Cucumber · Vitest · xUnit" },
+  { nm:"API & Contract Testing", lvl:"expert", tag:"EXPERT", c:"api", it:"Postman · REST · GraphQL · Pact Foundation · Newman CLI" },
+  { nm:"Performance Testing", lvl:"proficient", tag:"PASS", c:"perf", it:"Locust · JMeter · k6" },
+  { nm:"CI/CD & DevOps", lvl:"proficient", tag:"PASS", c:"devops", it:"GitHub Actions · Jenkins · ArgoCD · GitLab CI · Docker" },
+  { nm:"Languages", lvl:"proficient", tag:"PASS", c:"lang", it:"TypeScript · Python · C#" },
+  { nm:"Monitoring & Logging", lvl:"proficient", tag:"PASS", c:"devops", it:"New Relic · Datadog · ELK Stack · Sumo Logic · Kibana" },
+  { nm:"Bug & Test Management", lvl:"expert", tag:"EXPERT", c:"api", it:"Jira · Confluence · TestLink · TFS · Mantis" },
+  { nm:"AI Tooling", lvl:"proficient", tag:"PASS", c:"ai", it:"Claude Code (Sonnet 4.6) · GitHub Copilot · Jira MCP" },
+  { nm:"Methodologies", lvl:"expert", tag:"EXPERT", c:"automation", it:"Shift-Left · TDD · BDD · Agile/Scrum · Contract Testing" },
+];
+
+const JOBS = [
+  { hash:"a3f1c8", co:"ATG / Keyloop", when:"06/2025 – present", head:true, badge:"HEAD",
+    projects:[
+      { t:"Sale Hub — Automotive Dealer Web Platform", role:"Senior Automation QE",
+        meta:"next.js · typescript · playwright · vitest · pact · github-actions · team/21 (uk+vn)",
+        bullets:[
+          "Championed <b>contract testing</b> with Playwright + Pact to validate BFF service contracts, stopping breaking changes before they ship.",
+          "Reworked GitHub Actions CI, cutting flaky-test noise and raising pipeline reliability for the QE team.",
+          "Wired <b>AI agents</b> (Claude Code, Copilot) into test generation, lifting coverage and trimming manual authoring.",
+        ]},
+      { t:"Lead Integration Adapters — Data Transformation Service", role:"Senior Automation QE",
+        meta:"dotnet-8 · c# · robot-framework · xunit · locust · postman/newman · team/7",
+        bullets:[
+          "Built data-mapping validation for <b>BMW/VW</b> dealer feeds into the lead management system.",
+          "Migrated legacy Newman tests to Robot Framework, aligning with the Auto COE platform.",
+        ]},
+    ]},
+  { hash:"7b2e09", co:"Sovereign / Techcraft", when:"05/2023 – 05/2025",
+    projects:[
+      { t:"Growmatic — GIS Business Intelligence Platform", role:"QC Leader",
+        meta:"react · mapbox · grpc · mongodb · pytest/selenium · jenkins · clients: apollo, mahindra",
+        bullets:[
+          "Stood up a CI/CD pipeline for Python-Selenium on Linux — automated tenant health checks <b>killed pre-demo failures</b>.",
+          "Introduced Playwright across web UI + API on 3 environments, a <b>20% CI improvement</b>.",
+        ]},
+      { t:"Intelomatic — Mobile Field-Force Tracking App", role:"QC Leader",
+        meta:"react-native · firebase · appium · android-sdk · maven · jenkins",
+        bullets:[
+          "Rolled out a shift-left template the India team adopted — <b>~30% quality lift</b>.",
+          "Led the Appium framework that cut regression time by <b>~45%</b> on core features.",
+          "Drove GPS calibration testing, <b>+40% accuracy</b>; incident templates cut PICS bug recurrence <b>~20%</b>.",
+        ]},
+    ]},
+  { hash:"c41d5a", co:"Skedulo", when:"03/2021 – 03/2023",
+    projects:[
+      { t:"VAX — High-Volume Vaccination Booking", role:"Quality Engineer 2.2",
+        meta:"react · salesforce-lwc · aws · testng · cucumber · kotlin · clients: ontario, wa, maryland, nz",
+        bullets:[
+          "API-tested AWS + Salesforce for a system handling <b>400K+ appointments/day</b> with zero data loss on sync.",
+          "Ran functional, regression and smoke suites across multiple government deployments.",
+        ]},
+      { t:"Data Loading & Packaging-Lite — Platform Tooling", role:"Quality Engineer 2.2 / 2.3",
+        meta:"react · nestjs/graphql · kafka · terraform · postgres · docker · jest",
+        bullets:[
+          "GraphQL API testing plus Jest unit tests written alongside developers.",
+          "Documented a local Docker stack so QEs could run regression offline.",
+        ]},
+    ]},
+  { hash:"e90f33", co:"Hubble Technology", when:"08/2017 – 10/2020",
+    projects:[
+      { t:"Hubble & BT — Baby-Monitor Apps + IoT Firmware", role:"QA Engineer → Assistant QA Manager",
+        meta:"appium · testng · android-sdk · xcode · sql-server · jenkins · clients: motorola, bt",
+        bullets:[
+          "Ran a QA team of <b>9</b> (7 engineers + 2 interns); owned test strategy for firmware + app releases.",
+          "Built a Java tool for automated motion-detection via REST API, retiring manual camera-watching.",
+          "Taught <b>penetration testing</b> for IoT cameras with Nmap, Wireshark and dex2jar.",
+        ]},
+    ]},
+  { hash:"1f6a72", co:"LogiGear", when:"12/2010 – 08/2017",
+    projects:[
+      { t:"Multi-Platform Test Automation — Outsourcing & Internal", role:"Automation QA Engineer",
+        meta:"test-architect · testng · selenium · 7-year foundation: mobile, web, network, robotics",
+        bullets:[
+          "Automated for <b>Evernote, RepairPal, Kaplan, Commscope</b> and more.",
+          "Tested <b>Neato Robotics</b> vacuum — firmware, navigation, app: an early IoT run.",
+        ]},
+    ]},
+];
+
+const suitesEl = document.getElementById('suites');
+SKILLS.forEach(s => {
+  const d = document.createElement('div');
+  d.className = 'suite rv';
+  d.dataset.c = s.c;
+  const passClass = s.tag === 'EXPERT' ? 'pass expert' : 'pass';
+  d.innerHTML = `
+    <div class="${passClass}">${s.tag === 'EXPERT' ? '✦ '+s.tag : '✓ '+s.tag}</div>
+    <div class="suite-body">
+      <div class="nm">${s.nm}<span class="lvl">${s.lvl}</span></div>
+      <div class="it">${s.it}</div>
+    </div>`;
+  suitesEl.appendChild(d);
+});
+
+const logEl = document.getElementById('gitlog');
+JOBS.forEach(j => {
+  const c = document.createElement('div');
+  c.className = 'commit rv' + (j.head ? ' head' : '');
+  let html = `<div class="commit-hd">
+      <span class="hash">${j.hash}</span>
+      <span class="co">${j.co}</span>
+      ${j.badge ? `<span class="badge">${j.badge}</span>` : ''}
+      <span class="when">${j.when}</span>
+    </div>`;
+  j.projects.forEach(p => {
+    html += `<div class="proj">
+      <div class="proj-t">${p.t} <span class="role">· ${p.role}</span></div>
+      <div class="proj-meta">${p.meta}</div>
+      <ul>${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+    </div>`;
+  });
+  c.innerHTML = html;
+  logEl.appendChild(c);
+});
+
+document.getElementById('filters').addEventListener('click', e => {
+  if (e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('#filters button').forEach(b => b.classList.remove('on'));
+  e.target.classList.add('on');
+  const c = e.target.dataset.c;
+  document.querySelectorAll('.suite').forEach(s => {
+    s.classList.toggle('dim', c !== 'all' && s.dataset.c !== c);
+  });
+});
+
+document.getElementById('dl').addEventListener('click', e => { e.preventDefault(); window.print(); });
+
+const io = new IntersectionObserver(es => {
+  es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach((el,i) => {
+  el.style.transitionDelay = Math.min(i*24, 160) + 'ms';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
